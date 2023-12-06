@@ -237,10 +237,13 @@ class JetVM:
         def pack(self):
             self.element.style.left = str(0)+'px'
             self.element.style.top = str(0)+'px'
-            if self.image:
-                self.element = document.createElement('img')
-                self.element.src = self.image
             document <= self.element
+        
+        def place_forget(self):
+            self.element.style.position = 'static'
+            self.element.style.left = '0px'
+            self.element.style.top = '0px'
+        
     class Button:
         def __init__(self, _=None, text='', command=None, font=None, fg=None, bg=None, background=None, foreground=None, image=None):
             self.text = ''
@@ -316,6 +319,8 @@ class JetVM:
             self.button.style.top = '0px'
             
         def pack(self):
+            self.element.style.left = str(0)+'px'
+            self.element.style.top = str(0)+'px'
             document <= self.button
     class threading:
         class Thread:
