@@ -235,6 +235,8 @@ class JetVM:
             self.element.style.top = '0px'
 
         def pack(self):
+            self.element.style.left = str(0)+'px'
+            self.element.style.top = str(0)+'px'
             if self.image:
                 self.element = document.createElement('img')
                 self.element.src = self.image
