@@ -63,25 +63,14 @@ class JetVM:
                 pass
             elif 'tkinter.' in line: line.replace('tkinter.', '')
             elif 'tk.' in line: line.replace('tk.', '')
-
             elif 'Label' in line:
                 label_index = line.find('Label')
                 equal_index = line.find('=')
                 append_alt_code(line[:equal_index+1] + ' ' + line[label_index:])
-            
             elif 'Button' in line:
                 button_index = line.find('Button')
                 equal_index = line.find('=')
                 append_alt_code(line[:equal_index+1] + ' ' + line[button_index:])
-
-
-                
-                
-             
-                            
-                            
-            elif 'print' in line:
-                append_alt_code(line.replace('print', 'alert'))
             elif 'class Label' in line:
                 print(f'JetVM: Compiling stopped! Please change this line of code: {line}')
                 quit()
@@ -257,6 +246,7 @@ class JetVM:
             self.button.textContent = text
             self.button.style.borderRadius = '0'
             self.button.style.borderColor = 'white'
+            self.image = image
             if command is not None:
                 self.button.bind('click', command)
             if font is not None:
