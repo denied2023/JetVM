@@ -357,7 +357,10 @@ class JetVM:
         print(f'Done compiling! Saved in "{save_folder}"')
     
     def super_compile(self, name, code, assets):
-        #finish super coming here!
+        print('Super Compiling is under development! Come back later!')
+        quit()
+        
+        #finish super compling here!
         compiled = self._compile(name, code)
 
         global alt_python_code
