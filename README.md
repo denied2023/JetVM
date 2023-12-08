@@ -16,6 +16,9 @@
 ![example code image](https://raw.githubusercontent.com/btplayzxgit/btplayzxgit/main/jetvmcompileexample.PNG)
 
 
+- Step 6: Open the folder that just appeared in your project's folder. You have an HTML file.
+
+
 
 
 
