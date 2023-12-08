@@ -122,7 +122,7 @@ class JetVM:
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython_stdlib.js"></script>
     <script type = text/javascript>
         if(document.location.href.startsWith("file:")) {{
-            alert("Do not run this Klockcraft game locally, please run on live server or HTTP(s).");
+            alert("It is recommended to use live server or HTTP(s) to run this program! Project might crash. Press OK to continue.");
         }}
     </script>
 
