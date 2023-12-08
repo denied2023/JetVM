@@ -122,7 +122,7 @@ class JetVM:
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython_stdlib.js"></script>
     <script type = text/javascript>
         if(document.location.href.startsWith("file:")) {{
-            alert("Do not run this Klockcraft game locally, please run on live server or HTTP(s).");
+            alert("It is recommended to use live server or HTTP(s) to run this program! Project might crash. Press OK to continue.");
         }}
     </script>
 
@@ -182,6 +182,8 @@ class JetVM:
             if self.image:
                 self.element = document.createElement('img')
                 self.element.src = self.image
+            if self.text:
+                self.element.textContent = self.text
             
 
             
@@ -303,6 +305,7 @@ class JetVM:
             if image is not None:
                 self.element = document.createElement('img')
                 self.element.src = self.image
+            document <= self.button
         def place(self, x, y):
             self.button.style.position = 'absolute'
             self.button.style.left = str(x)+'px'
@@ -359,7 +362,7 @@ class JetVM:
     def super_compile(self, name, code, assets):
         print('Super Compiling is under development! Come back later!')
         quit()
-        
+
         #finish super compling here!
         compiled = self._compile(name, code)
 
