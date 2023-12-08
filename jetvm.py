@@ -192,11 +192,11 @@ class JetVM:
         def config(self, text=None, font=None, fg=None, bg=None, background=None, foreground=None):
             if text is not None:
                 self.text = text
-                self.element.textContent = self.text
+                self.element.innerHTML = self.text
             if font is not None:
                 self.font = font
                 self.element.style.fontFamily = self.font[0]
-                self.element.style.fontSize = self.font[1]
+                self.element.style.fontSize = str(self.font[1]) + 'px'
                 if self.font[2] == 'bold':
                     self.element.style.fontWeight = 'bold'
                 elif self.font[2] == 'italic':
@@ -204,33 +204,26 @@ class JetVM:
                 else:
                     self.element.style.fontWeight = 'normal'
                     self.element.style.fontStyle = 'normal'
-            if fg is not None:
-                self.fg = fg
+            if fg is not None or foreground is not None:
+                self.fg = fg if fg is not None else foreground
                 self.element.style.color = self.fg
-            if bg is not None:
-                self.bg = bg
+            if bg is not None or background is not None:
+                self.bg = bg if bg is not None else background
                 self.element.style.backgroundColor = self.bg
-            if background is not None:
-                self.background = background
-                self.element.style.backgroundColor = self.background
-            if foreground is not None:
-                self.foreground = foreground
-                self.element.style.color = self.foreground
             if self.image:
                 self.element = document.createElement('img')
                 self.element.src = self.image
-            
-            
-            
+                    
+                    
         def place(self, x, y):
             self.element.style.left = str(x)+'px'
             self.element.style.top = str(y)+'px'
             document <= self.element
 
-        
+                
         def destroy(self):
             self.element.remove()
-        
+                
         def place_forget(self):
             self.element.style.position = 'static'
             self.element.style.left = '0px'
@@ -240,7 +233,7 @@ class JetVM:
             self.element.style.left = str(0)+'px'
             self.element.style.top = str(0)+'px'
             document <= self.element
-        
+                
         def place_forget(self):
             self.element.style.position = 'static'
             self.element.style.left = '0px'
