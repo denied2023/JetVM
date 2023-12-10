@@ -354,7 +354,6 @@ class JetVM:
     
     def super_compile(self, name, code, assets):
         print('Super Compiling is under development! Come back later!')
-        quit()
 
         #finish super compling here!
         compiled = self._compile(name, code)
@@ -364,44 +363,211 @@ class JetVM:
         alt_python_code = compiled[1]
 
         global html
-        self.html = '''
-<DOCTYPE html>
+        html = f'''
 <DOCTYPE html>
 <head>
     <title>Klockcraft</title>
     <meta charset="utf-8">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.12.0/brython_stdlib.js"></script>
+
 </head>
 
 <body>
 
     <script type="text/python">
     from browser import *
+    from random import randint
+
+
+    assets = {assets}
+
+    def open_file(file_name):
+        return assets[file_name]
+
     class Label:
-        def __init__(self, _=None, text=''):
-            self.text = ''
-        def config(self, text):
-            pass
+        def __init__(self, _=None, text='', font=None, fg=None, bg=None, background=None, foreground=None, image=None):
+            self.text = text
+            self.font = font
+            self.fg = fg
+            self.bg = bg
+            self.image = image
+            self.background = background
+            self.foreground = foreground
+            self.element = document.createElement('label')
+            self.element.textContent = self.text
+            self.element.style.userSelect = 'none'
+            if self.font:
+                self.element.style.fontFamily = self.font[0]
+                self.element.style.fontSize = self.font[1]
+                if self.font[2] == 'bold':
+                    self.element.style.fontWeight = 'bold'
+                elif self.font[2] == 'italic':
+                    self.element.style.fontStyle = 'italic'
+                else:
+                    self.element.style.fontWeight = 'normal'
+                    self.element.style.fontStyle = 'normal'
+            if self.fg:
+                self.element.style.color = self.fg
+            if self.bg:
+                self.element.style.backgroundColor = self.bg
+            if self.background:
+                self.element.style.backgroundColor = self.background
+            if self.foreground:
+                self.element.style.color = self.foreground
+            if self.image:
+                self.element = document.createElement('img')
+                self.element.src = self.image
+            if self.text:
+                self.element.textContent = self.text
+            
+
+            
+        
+
+        def config(self, text=None, font=None, fg=None, bg=None, background=None, foreground=None):
+            if text is not None:
+                self.text = text
+                self.element.innerHTML = self.text
+            if font is not None:
+                self.font = font
+                self.element.style.fontFamily = self.font[0]
+                self.element.style.fontSize = str(self.font[1]) + 'px'
+                if self.font[2] == 'bold':
+                    self.element.style.fontWeight = 'bold'
+                elif self.font[2] == 'italic':
+                    self.element.style.fontStyle = 'italic'
+                else:
+                    self.element.style.fontWeight = 'normal'
+                    self.element.style.fontStyle = 'normal'
+            if fg is not None or foreground is not None:
+                self.fg = fg if fg is not None else foreground
+                self.element.style.color = self.fg
+            if bg is not None or background is not None:
+                self.bg = bg if bg is not None else background
+                self.element.style.backgroundColor = self.bg
+            if self.image:
+                self.element = document.createElement('img')
+                self.element.src = self.image
+                    
+                    
+        def place(self, x, y):
+            self.element.style.left = str(x)+'px'
+            self.element.style.top = str(y)+'px'
+            document <= self.element
+
+                
+        def destroy(self):
+            self.element.remove()
+                
+        def place_forget(self):
+            self.element.style.position = 'static'
+            self.element.style.left = '0px'
+            self.element.style.top = '0px'
+
+        def pack(self):
+            self.element.style.left = str(0)+'px'
+            self.element.style.top = str(0)+'px'
+            document <= self.element
+                
+        def place_forget(self):
+            self.element.style.position = 'static'
+            self.element.style.left = '0px'
+            self.element.style.top = '0px'
+        
     class Button:
-        def __init__(self, _=None, text=''):
+        def __init__(self, _=None, text='', command=None, font=None, fg=None, bg=None, background=None, foreground=None, image=None):
             self.text = ''
-        def config(self, text):
-            pass
+            self.button = html.BUTTON(text)
+            self.button.textContent = text
+            self.button.style.borderRadius = '0'
+            self.button.style.borderColor = 'white'
+            self.image = image
+            if command is not None:
+                self.button.bind('click', command)
+            if font is not None:
+                self.button.style.fontFamily = font[0]
+                self.button.style.fontSize = font[1]
+                if font[2] == 'bold':
+                    self.button.style.fontWeight = 'bold'
+                elif font[2] == 'italic':
+                    self.button.style.fontStyle = 'italic'
+                else:
+                    self.button.style.fontWeight = 'normal'
+                    self.button.style.fontStyle = 'normal'
+            if fg is not None:
+                self.button.style.color = fg
+            if bg is not None:
+                self.button.style.backgroundColor = bg
+            if background is not None:
+                self.button.style.backgroundColor = background
+            if foreground is not None:
+                self.button.style.color = foreground
+            if self.image:
+                self.element = document.createElement('img')
+                self.element.src = self.image
+            
+
+        def config(self, text='', command=None, font=None, fg=None, bg=None, background=None, foreground=None, image=None):
+            self.button.text = text
+            self.button.textContent = text
+            if command is not None:
+                self.button.bind('click', command)
+            if font is not None:
+                self.button.style.fontFamily = font[0]
+                self.button.style.fontSize = font[1]
+                if font[2] == 'bold':
+                    self.button.style.fontWeight = 'bold'
+                elif font[2] == 'italic':
+                    self.button.style.fontStyle = 'italic'
+                else:
+                    self.button.style.fontWeight = 'normal'
+                    self.button.style.fontStyle = 'normal'
+            if fg is not None:
+                self.button.style.color = fg
+            if bg is not None:
+                self.button.style.backgroundColor = bg
+            if background is not None:
+                self.button.style.backgroundColor = background
+            if foreground is not None:
+                self.button.style.color = foreground
+            if image is not None:
+                self.element = document.createElement('img')
+                self.element.src = self.image
+            document <= self.button
+        def place(self, x, y):
+            self.button.style.position = 'absolute'
+            self.button.style.left = str(x)+'px'
+            self.button.style.top = str(y)+'px'
+            document <= self.button
+
+
+        def destroy(self):
+            self.button.remove()
+
+        def place_forget(self):
+            self.button.style.position = 'static'
+            self.button.style.left = '0px'
+            self.button.style.top = '0px'
+            
+        def pack(self):
+            self.element.style.left = str(0)+'px'
+            self.element.style.top = str(0)+'px'
+            document <= self.button
     class threading:
         class Thread:
             daemon = False
             def __init__(self, target):
                 self.target = target
             def start(self):
-                timer.set_interval(self.target, 0)
+                timer.set_interval(self.target, 1)
             
-            def start(self):
-                pass
+    def PhotoImage(file): return file
     {alt_python_code}
     </script>
 
-</body>'''
+</body>
+    '''
 
         save_folder = 'JetVM-SUPER_COMPILED-'+name
         if os.path.exists(save_folder):
