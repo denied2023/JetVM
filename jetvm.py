@@ -26,8 +26,6 @@ class JetVM:
                 pass
             elif 'from tkinter' in line:
                 pass
-            elif 'import turtle' in line:
-                pass
             elif 'from turtle' in line:
                 pass
             elif 'Tk()' in line:
@@ -51,8 +49,6 @@ class JetVM:
                 pass
             elif '.resizable' in line:
                 pass
-            elif 'turtle.' in line:
-                append_alt_code(line.replace('turtle.', ''))
             elif 'import threading' in line:
                 pass
             elif 'from threading' in line:
@@ -325,6 +321,427 @@ class JetVM:
                 self.target = target
             def start(self):
                 timer.set_interval(self.target, 1)
+    class turtle:
+        class Turtle:
+            def __init__(self):
+                self.element = document.createElement('canvas')
+                self.element.style.border = '1px solid black'
+                self.element.style.position = 'absolute'
+                self.element.style.left = '0px'
+                self.element.style.top = '0px'
+                self.element.width = 500
+                self.element.height = 500
+                document <= self.element
+                self.ctx = self.element.getContext('2d')
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, 250)
+                self.ctx.lineTo(500, 250)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(250, 0)
+                self.ctx.lineTo(250, 500)
+                self.ctx.stroke()
+                self.x = 250
+                self.y = 250
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+                self.element.style.border = '1px solid black'
+                self.element.style.position = 'absolute'
+                self.element.style.left = '0px'
+                self.element.style.top = '0px'
+                self.element.width = 500
+                self.element.height = 500
+                document <= self.element
+                self.ctx = self.element.getContext('2d')
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, 250)
+                self.ctx.lineTo(500, 250)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(250, 0)
+                self.ctx.lineTo(250, 500)
+                self.ctx.stroke()
+                self.x = 250
+                self.y = 250
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+            def forward(self, distance):
+                self.ctx.strokeStyle = self.color
+                self.ctx.lineWidth = self.width
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.x, self.y)
+                self.x += distance * math.cos(self.angle)
+                self.y += distance * math.sin(self.angle)
+                self.ctx.lineTo(self.x, self.y)
+                self.ctx.stroke()
+            def backward(self, distance):
+                self.ctx.strokeStyle = self.color
+                self.ctx.lineWidth = self.width
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.x, self.y)
+                self.x -= distance * math.cos(self.angle)
+                self.y -= distance * math.sin(self.angle)
+                self.ctx.lineTo(self.x, self.y)
+                self.ctx.stroke()
+            def right(self, angle):
+                self.angle -= math.radians(angle)
+            def left(self, angle):
+                self.angle += math.radians(angle)
+            def penup(self):
+                self.pen = False
+            def pendown(self):
+                self.pen = True
+            def speed(self, speed):
+                self.speed = speed
+            def goto(self, x, y):
+                self.x = x
+                self.y = y
+            def setx(self, x):
+                self.x = x
+            def sety(self, y):
+                self.y = y
+            def setheading(self, angle):
+                self.angle = math.radians(angle)
+            def home(self):
+                self.x = 250
+                self.y = 250
+                self.angle = 0
+            def clear(self):
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, 250)
+                self.ctx.lineTo(500, 250)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(250, 0)
+                self.ctx.lineTo(250, 500)
+                self.ctx.stroke()
+            def reset(self):
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, 250)
+                self.ctx.lineTo(500, 250)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(250, 0)
+                self.ctx.lineTo(250, 500)
+                self.ctx.stroke()
+                self.x = 250
+                self.y = 250
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+            def circle(self, radius, extent=None, steps=None):
+                if extent is None:
+                    extent = 360
+                if steps is None:
+                    steps = 360
+                self.ctx.strokeStyle = self.color
+                self.ctx.lineWidth = self.width
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.x, self.y)
+                for i in range(steps):
+                    if i > extent:
+                        break
+                    self.x += radius * math.cos(self.angle)
+                    self.y += radius * math.sin(self.angle)
+                    self.ctx.lineTo(self.x, self.y)
+                    self.ctx.stroke()
+            def dot(self, size=None, color=None):
+                if size is None:
+                    size = self.width
+                if color is None:
+                    color = self.color
+                self.ctx.fillStyle = color
+                self.ctx.beginPath()
+                self.ctx.arc(self.x, self.y, size, 0, 2 * math.pi)
+                self.ctx.fill()
+            def stamp(self):
+                self.ctx.strokeStyle = self.color
+                self.ctx.lineWidth = self.width
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.x, self.y)
+                self.ctx.lineTo(self.x, self.y)
+                self.ctx.stroke()
+            def write(self, text, font=None, align=None, move=None):
+                if font is None:
+                    font = ('Arial', 12, 'normal')
+                if align is None:
+                    align = 'left'
+                if move is None:
+                    move = True
+                self.ctx.font = str(font[1]) + 'px ' + font[0]
+                self.ctx.textAlign = align
+                self.ctx.fillText(text, self.x, self.y)
+                if move:
+                    self.x += self.ctx.measureText(text).width
+            def begin_fill(self):
+                self.ctx.fillStyle = self.color
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.x, self.y)
+            def end_fill(self):
+                self.ctx.fill()
+            def color(self, color):
+                self.color = color
+            def width(self, width):
+                self.width = width
+            def hideturtle(self):
+                self.element.style.display = 'none'
+            def showturtle(self):
+                self.element.style.display = 'block'
+            def isvisible(self):
+                return self.element.style.display == 'block'
+            def isdown(self):
+                return self.pen
+            def distance(self, x, y):
+                return math.sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
+            def heading(self):
+                return math.degrees(self.angle)
+            def xcor(self):
+                return self.x
+            def ycor(self):
+                return self.y
+            def get_poly(self):
+                return self.ctx.getImageData(0, 0, self.element.width, self.element.height)
+            def set_poly(self, poly):
+                self.ctx.putImageData(poly, 0, 0)
+            def get_screen_poly(self):
+                return self.ctx.getImageData(0, 0, self.element.width, self.element.height)
+            def set_screen_poly(self, poly):
+                self.ctx.putImageData(poly, 0, 0)
+            def get_shapepoly(self):
+                return self.ctx.getImageData(0, 0, self.element.width, self.element.height)
+            def set_shapepoly(self, poly):
+                self.ctx.putImageData(poly, 0, 0)
+            def get_shapepoly(self):
+                return self.ctx.getImageData(0, 0, self.element.width, self.element.height)
+            def set_shapepoly(self, poly):
+                self.ctx.putImageData(poly, 0, 0)
+            def get_shape(self):
+                return self.ctx.getImageData(0, 0, self.element.width, self.element.height)
+            def set_shape(self, poly):
+                self.ctx.putImageData(poly, 0, 0)
+            def get_shapepoly(self):
+                return self.ctx.getImageData(0, 0, self.element.width, self.element.height)
+            def set_shapepoly(self, poly):
+                self.ctx.putImageData(poly, 0, 0)
+            def pencolor(self, color):
+                self.color = color
+            def fillcolor(self, color):
+                self.color = color
+            def bgcolor(self, color):
+                self.ctx.fillStyle = color
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+            def getcanvas(self):
+                return self.element
+            def getpen(self):
+                return self.pen
+            def getscreen(self):
+                return self.element
+            def getturtle(self):
+                return self.element
+        class Screen:
+            def __init__(self):
+                self.element = document.createElement('canvas')
+                self.element.style.border = '1px solid black'
+                self.element.style.position = 'absolute'
+                self.element.style.left = '0px'
+                self.element.style.top = '0px'
+                self.element.width = 500
+                self.element.height = 500
+                document <= self.element
+                self.ctx = self.element.getContext('2d')
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, 250)
+                self.ctx.lineTo(500, 250)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(250, 0)
+                self.ctx.lineTo(250, 500)
+                self.ctx.stroke()
+                self.x = 250
+                self.y = 250
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+            def setup(self, width, height, startx=None, starty=None):
+                self.element.width = width
+                self.element.height = height
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, self.element.height / 2)
+                self.ctx.lineTo(self.element.width, self.element.height / 2)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.element.width / 2, 0)
+                self.ctx.lineTo(self.element.width / 2, self.element.height)
+                self.ctx.stroke()
+                self.x = self.element.width / 2
+                self.y = self.element.height / 2
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+                if startx is not None:
+                    self.x = startx
+                if starty is not None:
+                    self.y = starty
+            def title(self, title):
+                document.title = title
+            def bgcolor(self, color):
+                self.ctx.fillStyle = color
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+            def clear(self):
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, self.element.height / 2)
+                self.ctx.lineTo(self.element.width, self.element.height / 2)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.element.width / 2, 0)
+                self.ctx.lineTo(self.element.width / 2, self.element.height)
+                self.ctx.stroke()
+                self.x = self.element.width / 2
+                self.y = self.element.height / 2
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+            def reset(self):
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, self.element.height / 2)
+                self.ctx.lineTo(self.element.width, self.element.height / 2)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.element.width / 2, 0)
+                self.ctx.lineTo(self.element.width / 2, self.element.height)
+                self.ctx.stroke()
+                self.x = self.element.width / 2
+                self.y = self.element.height / 2
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+            def bye(self):
+                self.element.remove()
+            def exitonclick(self):
+                self.element.bind('click', lambda _: self.element.remove())
+            def onclick(self, fun, btn=1, add=None):
+                self.element.bind('click', fun)
+            def onkey(self, fun, key):
+                self.element.bind('keydown', fun)
+            def onkeypress(self, fun, key): 
+                self.element.bind('keydown', fun)
+            def onkeyrelease(self, fun, key):
+                self.element.bind('keyup', fun)
+            def listen(self):
+                pass
+            def ontimer(self, fun, t=0):
+                timer.set_timeout(fun, t)
+            def ontimer(self, fun, t=0):
+                timer.set_timeout(fun, t)
+            def tracer(self, n=None, delay=None):
+                pass
+            def update(self):
+                pass
+            def window_height(self):
+                return self.element.height
+            def window_width(self):
+                return self.element.width
+            def window_x(self):
+                return self.element.offsetLeft
+            def window_y(self):
+                return self.element.offsetTop
+            def screensize(self, width, height, startx=None, starty=None):
+                self.element.width = width
+                self.element.height = height
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, self.element.height / 2)
+                self.ctx.lineTo(self.element.width, self.element.height / 2)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.element.width / 2, 0)
+                self.ctx.lineTo(self.element.width / 2, self.element.height)
+                self.ctx.stroke()
+                self.x = self.element.width / 2
+                self.y = self.element.height / 2
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+                if startx is not None:
+                    self.x = startx
+                if starty is not None:
+                    self.y = starty
+            def setworldcoordinates(self, llx, lly, urx, ury):
+                self.element.width = urx - llx
+                self.element.height = ury - lly
+                self.ctx.fillStyle = 'white'
+                self.ctx.fillRect(0, 0, self.element.width, self.element.height)
+                self.ctx.strokeStyle = 'black'
+                self.ctx.lineWidth = 1
+                self.ctx.beginPath()
+                self.ctx.moveTo(0, self.element.height / 2)
+                self.ctx.lineTo(self.element.width, self.element.height / 2)
+                self.ctx.stroke()
+                self.ctx.beginPath()
+                self.ctx.moveTo(self.element.width / 2, 0)
+                self.ctx.lineTo(self.element.width / 2, self.element.height)
+                self.ctx.stroke()
+                self.x = self.element.width / 2
+                self.y = self.element.height / 2
+                self.angle = 0
+                self.pen = True
+                self.color = 'black'
+                self.width = 1
+                self.speed = 1
+
             
     def PhotoImage(file): return file
     {self.alt_python_code}
