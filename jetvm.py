@@ -79,6 +79,13 @@ class JetVM:
             elif 'def Button' in line:
                 print(f'JetVM: Compiling stopped! Please change this line of code: {line}')
                 quit()
+            elif 'open(' in line:
+                line = line.replace('open(', 'open_file(')
+                line = line.replace("',", "'")
+                line = line.replace('r', '')
+                line = line.replace('r+', '')
+                if "'w'" in line: print(f'JetVM: Compiling stopped! "{line}": You cannot write files in JetVM!')
+                append_alt_code(line)
 
             else:
                 append_alt_code(line)
@@ -92,11 +99,7 @@ class JetVM:
                     label_var = label_var + char
             label_var = label_var.replace(' ', '')
 
-            if 'open(' in line:
-                line.replace('open(', 'open_file(')
-                line.replace("',", "'")
-                line.replace('r', '')
-                line.replace('r+', '')
+            
 
 
 
