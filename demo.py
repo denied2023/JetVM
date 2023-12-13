@@ -3,7 +3,8 @@ import jetvm
 
 
 code = '''
-import tkinter
+from tkinter import Label
+from tkinter import Button
 import turtle
 def on_click(_):
     print('Hello World!')
