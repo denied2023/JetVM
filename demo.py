@@ -5,7 +5,6 @@ import jetvm
 code = '''
 from tkinter import Label
 from tkinter import Button
-import turtle
 def on_click(_):
     print('Hello World!')
     testing_label.config(text='Ouch! You clicked me!')
@@ -16,3 +15,4 @@ testing_label.pack()
 pen = turtle.Turtle()'''
 vm = jetvm.JetVM()
 vm.compile('test', code)
+
