@@ -4,9 +4,8 @@ import re
 
 # JetVM by BtPlayzX
 
-print('JetVM\'s module system is being fixed. Come back later.')
+print('JetVM\'s module system is under constuction! Come back later.')
 quit()
-
 class JetVM:
     def __init__(self):
         self.tab = '    '
@@ -405,14 +404,6 @@ class JetVM:
                 pass
             elif '.resizable' in line:
                 pass
-            # elif 'Label' in line:
-            #     label_index = line.find('Label')
-            #     equal_index = line.find('=')
-            #     append_alt_code(line[:equal_index+1] + ' ' + line[label_index:])
-            # elif 'Button' in line:
-            #     button_index = line.find('Button')
-            #     equal_index = line.find('=')
-            #     append_alt_code(line[:equal_index+1] + ' ' + line[button_index:])
             elif 'class Label' in line:
                 print(f'JetVM: Compiling stopped! Please change this line of code: {line}')
                 quit()
@@ -435,12 +426,15 @@ class JetVM:
             elif 'import' in line:
                 if 'from' in line:
                     print('hit')
-                    module = line.replace('from ', '')
+                    module = line.split('import')[0].strip()
+                    module = module.replace('from ', '')
                     module = module_pack[module]
-                    var = module.split(' import ')
+                    var = line.split('import')[1].strip()
+                    var = var.replace(' ', '')
+                    var = var.replace('from', '')
                     var = module[var]
-                    append_import_code(line.replace('from ', ''))
-                    print(line.replace('from ', ''))
+                    append_import_code(var)
+                    
                 else:
                     module = line.replace('import ', '')
                     module = module_pack[module]
