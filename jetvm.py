@@ -470,6 +470,7 @@ class JetVM:
 
         self.html = f'''
 <DOCTYPE html>
+<!--- Demo Codeing -->
 <head>
     <title>Klockcraft</title>
     <meta charset="utf-8">
